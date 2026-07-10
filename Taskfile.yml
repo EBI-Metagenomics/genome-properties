@@ -1,0 +1,15 @@
+version: '3'
+
+vars:
+  TEST_IMAGE: genome-properties-tests
+
+tasks:
+  test:
+    desc: Run the Perl test suite in Docker
+    cmds:
+      - docker build --file Dockerfile.test --tag {{.TEST_IMAGE}} .
+      - >-
+        docker run --rm --read-only
+        --tmpfs /tmp:rw,nosuid,nodev,size=64m
+        {{.TEST_IMAGE}}
+
