@@ -11,6 +11,7 @@ use GenomePropertiesIO;
 use Text::Wrap;
 use LWP::Simple;
 use JSON;
+use IO::Uncompress::Gunzip qw($GunzipError);
 
 sub new {
   my $class = shift;
@@ -434,6 +435,15 @@ sub set_options {
   return 1;
 }
 
+sub _open_input_file {
+  my ($self, $file) = @_;
+
+  my $fh = IO::Uncompress::Gunzip->new($file, Transparent => 1);
+  croak("Failed to open $file: $GunzipError\n") unless $fh;
+
+  return $fh;
+}
+
 
 sub define_sequence_set {
   my($self, $seq_blob) = @_;
@@ -446,8 +456,9 @@ sub define_sequence_set {
     }
   }else{
     #open and read the sequence file
-    open(FH, '<', $self->{seqs}) or croak( "Failed to open ".$self->{seqs}."\n");
-    @sb = <FH>;
+    my $fh = $self->_open_input_file($self->{seqs});
+    @sb = <$fh>;
+    close($fh);
   }
 
 
@@ -489,9 +500,9 @@ sub signature_matches {
     if(defined($self->{match_source}) and $self->{match_source} eq "inline"){
       @mb = split(/\n/, $self->{matches});  
     }else{
-      open(FH, '<', $self->{matches}) or die "Could not open signature matches file\n";
-      @mb = <FH>;
-      close(FH);
+      my $fh = $self->_open_input_file($self->{matches});
+      @mb = <$fh>;
+      close($fh);
     }
     
     foreach my $line (@mb){

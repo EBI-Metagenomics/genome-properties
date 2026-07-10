@@ -71,9 +71,10 @@ Options:
 == Sequence set ==
 
 One or both of these two options:
-matches <filename|TSV content> : TSV file of InterProScan5 output.
+matches <filename|TSV content> : TSV file of InterProScan5 output (plain text or gzip).
 match_source <file|inline> : file or inline. Default is to assume file.
-seq <filename>           : FASTA file of sequences that need to be analysed.
+seqs <filename>          : FASTA file of sequences that need to be analysed
+                           (plain text or gzip).
 
 
 == Calculation options ==
