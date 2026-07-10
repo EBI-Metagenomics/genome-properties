@@ -454,7 +454,7 @@ sub define_sequence_set {
     foreach my $r (@sb){
       
     }
-  }else{
+  }elsif($self->{seqs}){
     #open and read the sequence file
     my $fh = $self->_open_input_file($self->{seqs});
     @sb = <$fh>;

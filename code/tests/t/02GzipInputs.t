@@ -60,4 +60,18 @@ is_deeply(
   "Attach annotations read from uncompressed input",
 );
 
+my $matches_only_gp = GenomeProperties->new;
+$matches_only_gp->{matches} = $plain_match_file;
+
+$matches_only_gp->define_sequence_set;
+ok(
+  $matches_only_gp->annotate_sequences,
+  "Annotate sequences when only a match file is provided",
+);
+is_deeply(
+  $matches_only_gp->get_sequence_set->{seq1},
+  ['PF00001'],
+  "Build the sequence set from matches without a FASTA input",
+);
+
 done_testing();
