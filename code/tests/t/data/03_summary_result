@@ -1,0 +1,4 @@
+GenProp9001	Sufficient evidence present but not matched	NO
+GenProp9002	Sufficient evidence present and matched	YES
+GenProp9003	Two non-sufficient evidences, only one matched	NO
+GenProp9004	Required steps absent, only optional steps present	NO

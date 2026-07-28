@@ -1,0 +1,67 @@
+AC  GenProp9001
+DE  Sufficient evidence present but not matched
+TP  PATHWAY
+AU  Test
+TH  0
+CC  Regression test for ebi-pf-team genome-properties issue number 30.
+CC  This step has one evidence explicitly marked "sufficient" and one that is
+CC  not. Only the sufficient evidence should be able to prove the step; the
+CC  non-sufficient evidence being present should not, by itself, succeed.
+--
+SN  1
+ID  Mixed sufficient and non-sufficient evidence, sufficient absent
+RQ  1
+EV  IPR000001; SUFF01; sufficient;
+EV  IPR000002; NONSUFF01;
+//
+AC  GenProp9002
+DE  Sufficient evidence present and matched
+TP  PATHWAY
+AU  Test
+TH  0
+CC  Sanity check: a matched sufficient evidence is, on its own, enough to
+CC  succeed regardless of whether the non-sufficient evidence is present.
+--
+SN  1
+ID  Mixed sufficient and non-sufficient evidence, sufficient present
+RQ  1
+EV  IPR000003; SUFF02; sufficient;
+EV  IPR000004; NONSUFF02;
+//
+AC  GenProp9003
+DE  Two non-sufficient evidences, only one matched
+TP  PATHWAY
+AU  Test
+TH  0
+CC  Regression test: with no sufficient evidence present at all on the step,
+CC  ALL non-sufficient evidences must be found for the step to succeed.
+--
+SN  1
+ID  Two non-sufficient evidences, one present
+RQ  1
+EV  IPR000005; NONSUFF03A;
+EV  IPR000006; NONSUFF03B;
+//
+AC  GenProp9004
+DE  Required steps absent, only optional steps present
+TP  PATHWAY
+AU  Test
+TH  0
+CC  Regression test for Finding 1: the property-level threshold/PARTIAL
+CC  decision must consider only REQUIRED steps, not every found step.
+CC  Here the only required step is absent and one optional step is present.
+CC  With the old Perl behaviour this resolved to PARTIAL (because the
+CC  optional step was counted toward the threshold); the corrected
+CC  behaviour, matching pygenprop, is NO (zero required steps found, which
+CC  is not greater than the threshold of zero).
+--
+SN  1
+ID  Required step, evidence absent
+RQ  1
+EV  IPR000007; SUFF04; sufficient;
+--
+SN  2
+ID  Optional step, evidence present
+RQ  0
+EV  IPR000008; SUFF05; sufficient;
+//
