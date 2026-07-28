@@ -438,7 +438,7 @@ sub set_options {
 sub _open_input_file {
   my ($self, $file) = @_;
 
-  my $fh = IO::Uncompress::Gunzip->new($file, Transparent => 1);
+  my $fh = IO::Uncompress::Gunzip->new($file, Transparent => 1, MultiStream => 1);
   croak("Failed to open $file: $GunzipError\n") unless $fh;
 
   return $fh;
