@@ -438,7 +438,7 @@ sub set_options {
 sub _open_input_file {
   my ($self, $file) = @_;
 
-  my $fh = IO::Uncompress::Gunzip->new($file, Transparent => 1);
+  my $fh = IO::Uncompress::Gunzip->new($file, Transparent => 1, MultiStream => 1);
   croak("Failed to open $file: $GunzipError\n") unless $fh;
 
   return $fh;
@@ -624,8 +624,11 @@ sub check_results{
 sub evaluate_property {
   my($self, $acc) = @_; 
 
-	my $found = 0;
-	my $missing = 0;
+	my $found = 0;          # count of REQUIRED steps that were found
+	my $missing = 0;        # count of REQUIRED steps that were not found
+	my $required_total = 0; # total number of REQUIRED steps (excluding skipped)
+	my $all_found = 0;      # count of ALL steps (required + optional) that were found
+	my $all_total = 0;      # count of ALL non-skipped steps
 
   if($self->debug){
     print "In evaluate proptery, $acc\n";
@@ -645,22 +648,59 @@ sub evaluate_property {
       $def->evaluated(0);
       return;
     }
-    
+
+    #Skipped steps (no evidence) are ignored entirely, matching the
+    #pygenprop reimplementation which never creates a step without
+    #functional elements/evidence.
+    next if $step->skip == 1;
+
+    $all_total++;
     if($step->found){
-      $found++;
-    }elsif($step->required and $step->skip != 1){
-      $missing++
+      $all_found++;
+    }
+
+    if($step->required){
+      $required_total++;
+      if($step->found){
+        $found++;
+      }else{
+        $missing++;
+      }
     }
   }
-  
 
-  #Three possible results for the evaluation
-  if($found == 0 or $found <= $def->threshold){
-    $def->result('NO'); #No required steps found
-  }elsif($missing){
-    $def->result('PARTIAL'); #One or more required steps found, but one or more required steps missing
+
+  #Assignment matches the pygenprop reimplementation:
+  #  - If the property has one or more required steps, only the required
+  #    steps are consulted (calculate_property_assignment_from_required_steps):
+  #      YES     if every required step is found
+  #      PARTIAL if the number of found required steps is greater than the threshold
+  #      NO      otherwise
+  #    Non-required (optional) steps do NOT contribute to the threshold
+  #    comparison. This differs from the original Perl behaviour, which counted
+  #    every found step toward the threshold and could therefore report PARTIAL
+  #    based solely on optional-step evidence.
+  #  - If the property has no required steps at all, every step is consulted
+  #    (calculate_property_assignment_from_all_steps):
+  #      YES     if every step is found
+  #      NO      if no step is found
+  #      PARTIAL otherwise
+  if($required_total > 0){
+    if($found == $required_total){
+      $def->result('YES'); #All required steps found.
+    }elsif($found > $def->threshold){
+      $def->result('PARTIAL'); #Some required steps found, above threshold, but one or more missing.
+    }else{
+      $def->result('NO'); #At or below the threshold of found required steps.
+    }
   }else{
-    $def->result('YES'); #All steps found.
+    if($all_found == $all_total){
+      $def->result('YES');
+    }elsif($all_found == 0){
+      $def->result('NO');
+    }else{
+      $def->result('PARTIAL');
+    }
   }
 }
 
@@ -668,9 +708,8 @@ sub evaluate_property {
 
 sub evaluate_step {
   my($self, $step) = @_;
-  my $succeed = 0;
   my $some_evidence = 0; #Indicates whether the step is associated with some evidence, not really required.
-  
+
   #We need to know if this step have been evaluated. If it has a dependency on the another GP, that
   #has not been tested at this point, we will set this to being 0. Note, for steps with no evidence,
   #this remains true, but there is nothing to evaluate against.
@@ -679,49 +718,91 @@ sub evaluate_step {
       print "Evaluating ".$step->step_name."\n";
   }
   my $evRef = $step->get_evidence;
-  
+
+  #Each evidence is individually evaluated to a success/fail boolean. Evidence explicitly
+  #flagged as "sufficient" (EV lines with a third ';'-delimited field, e.g.
+  #"EV  IPR000001; PF00001; sufficient;") is considered strong enough evidence on its own to
+  #prove a step. Evidence without that flag is not, on its own, considered strong enough.
+  #
+  #Assignment rule (matches the pygenprop reimplementation and resolves
+  #https://github.com/ebi-pf-team/genome-properties/issues/30):
+  #  - If the step has one or more sufficient evidences, the step succeeds if ANY sufficient
+  #    evidence succeeds (non-sufficient evidences are not consulted in this case).
+  #  - If the step has no sufficient evidences at all, the step succeeds only if ALL of its
+  #    (non-sufficient) evidences succeed.
+  my @sufficient_results;
+  my @non_sufficient_results;
+
   if (!scalar(@{$evRef})){
     if($self->debug){
       print ("\tthis step has no evidence\n");
     }
     $step->skip(1);
   } else {
-  
+
     EV: foreach my $evObj (@{$evRef}){
     #if (!$ev_id) {print RESULTS ("there is no ev_id\n"); next;} - Add to the object method
       if ($self->debug) {print ("\tevidence is ".p($evObj)."\n");}
       if ($self->debug) {print "\tev type is: ".$evObj->type."\n";}
-      
+
+      my $ev_succeed = 0;
+
       if($evObj->gp){
         if(defined($self->get_defs->{ $evObj->gp })){
-          # For properties a PARTIAL or YES result is considered success           
-          if( $self->get_defs->{ $evObj->gp }->result eq 'YES' or 
+          # For properties a PARTIAL or YES result is considered success
+          if( $self->get_defs->{ $evObj->gp }->result eq 'YES' or
               $self->get_defs->{ $evObj->gp }->result eq 'PARTIAL' ){
-              $succeed++;
+              $ev_succeed = 1;
            }elsif($self->get_defs->{ $evObj->gp }->result eq 'UNTESTED'){
-              $step->evaluated(0);  
-#Todo - need to check this bit. Some times a step can have two evidences, so need to check this is okay.               
+              $step->evaluated(0);
+#Todo - need to check this bit. Some times a step can have two evidences, so need to check this is okay.
            }
         }
       }elsif($evObj->interpro){
-        #Need to annotated the sequences  
-        if(!$self->annotated){  
+        #Need to annotated the sequences
+        if(!$self->annotated){
           $self->annotate_sequences
         }
-        #See if the accession has been found  
+        #See if the accession has been found
         if($self->get_family( $evObj->accession ) ){
-          $succeed++;
-          last EV;
+          $ev_succeed = 1;
         }
       }else{
         die "unknown evidence object type\n";
       }
+
+      if(defined($evObj->type) and $evObj->type eq 'sufficient'){
+        push(@sufficient_results, $ev_succeed);
+      }else{
+        push(@non_sufficient_results, $ev_succeed);
+      }
     }
   }
-  if ($succeed){
+
+  my $success = 0;
+  if(@sufficient_results){
+    #Any successful sufficient evidence is enough on its own.
+    foreach my $result (@sufficient_results){
+      if($result){
+        $success = 1;
+        last;
+      }
+    }
+  }elsif(@non_sufficient_results){
+    #With no sufficient evidence present, every (non-sufficient) evidence must succeed.
+    $success = 1;
+    foreach my $result (@non_sufficient_results){
+      if(!$result){
+        $success = 0;
+        last;
+      }
+    }
+  }
+
+  if ($success){
     $step->found(1);
     #$step->matched_sequences($mSeqs);
-    #Need to get the sequences in here. 
+    #Need to get the sequences in here.
   }
 }
 

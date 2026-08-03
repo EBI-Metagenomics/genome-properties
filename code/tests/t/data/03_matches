@@ -1,0 +1,4 @@
+seq1	5f4dcc3b5aa765d61d8327deb882cf99	100	TIGRFAM	NONSUFF01	non-sufficient evidence match	1	100	1.0E-10	T	16-05-2018	IPR000002	desc
+seq2	5f4dcc3b5aa765d61d8327deb882cf99	100	TIGRFAM	SUFF02	sufficient evidence match	1	100	1.0E-10	T	16-05-2018	IPR000003	desc
+seq3	5f4dcc3b5aa765d61d8327deb882cf99	100	TIGRFAM	NONSUFF03A	one of two non-sufficient evidences match	1	100	1.0E-10	T	16-05-2018	IPR000005	desc
+seq4	5f4dcc3b5aa765d61d8327deb882cf99	100	TIGRFAM	SUFF05	optional step sufficient evidence match	1	100	1.0E-10	T	16-05-2018	IPR000008	desc
