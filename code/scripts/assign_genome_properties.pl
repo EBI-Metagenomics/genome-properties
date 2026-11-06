@@ -106,9 +106,10 @@ gff <filename>           : GFF3 file of CDS positions. CDS features are matched 
                          : InterProScan sequence identifiers by their ID, Name,
                          : locus_tag or protein_id attribute.
 cluster_distance <bp>    : Maximum gap between the two genes (default 3000).
-clustered <mode>         : strict (default) or permissive. In strict mode clustered
-                         : evidence is ignored when no gff file is given. Permissive
-                         : treats clustered evidence like any other evidence.
+clustered <mode>         : strict or permissive. Strict applies the proximity check and
+                         : ignores clustered evidence when no gff file is given.
+                         : Permissive treats clustered evidence like any other evidence.
+                         : Default: strict with a gff file, permissive without one.
 
 == Output options ==
 

@@ -83,7 +83,7 @@ In the case of the property description (CC) and private notes (**) fields, the 
 An EV line names the InterPro entry and the signature, and can end with one qualifier:
 
 - ``sufficient`` marks evidence that on its own identifies the step.
-- ``clustered`` marks evidence from a broad model that only counts when the matching gene lies close to the rest of the property. This is the HMM-CLUST method of the original JCVI Genome Properties: a gene matching clustered evidence fills the step only if it is within 3000 bp (by default) of a gene that matched non-clustered evidence for a different step of the same property. Calculating clustered evidence needs gene positions; see `Calculating <calculating.html>`_.
+- ``clustered`` marks evidence from a broad model that only counts when the matching gene lies close to the rest of the property. This is the HMM-CLUST method of the original JCVI Genome Properties: a gene matching clustered evidence fills the step only if it is within 3000 bp (by default) of a gene that matched non-clustered evidence for a different step of the same property. Calculating clustered evidence needs gene positions; without them, clustered evidence is treated like any other evidence by default. See `Calculating <calculating.html>`_.
 
 .. code-block:: none
 

@@ -30,7 +30,7 @@ sub new {
   $self->{cluster_distance} = 3000;
   #strict: clustered evidence needs gene positions (-gff), otherwise it is ignored.
   #permissive: clustered evidence is treated like any other evidence.
-  $self->{clustered}        = 'strict';
+  #If not set, strict is used when gene positions are given, otherwise permissive.
 
   #These should be constants;
   $self->{_skip}          = { CATEGORY => 1, ROOT => 1, SUMMARY => 1 };
@@ -443,7 +443,7 @@ sub set_options {
     $self->{$k} = $options->{$k};
   }
 
-  if($self->{clustered} ne 'strict' and $self->{clustered} ne 'permissive'){
+  if(defined($self->{clustered}) and $self->{clustered} ne 'strict' and $self->{clustered} ne 'permissive'){
     die "The clustered option must be strict or permissive\n";
   }
   if($self->{cluster_distance} !~ /^\d+$/){
@@ -840,7 +840,7 @@ sub evaluate_step {
 sub evaluate_clustered_steps {
   my($self, $def) = @_;
 
-  return if($self->{clustered} eq 'permissive');
+  return if($self->_clustered_mode eq 'permissive');
 
   my @clusteredSteps;
   foreach my $step (@{ $def->get_steps }){
@@ -886,7 +886,13 @@ sub evaluate_clustered_steps {
 
 sub _uses_clustered_rule {
   my($self, $ev) = @_;
-  return ($ev->clustered and $self->{clustered} eq 'strict') ? 1 : 0;
+  return ($ev->clustered and $self->_clustered_mode eq 'strict') ? 1 : 0;
+}
+
+sub _clustered_mode {
+  my($self) = @_;
+  return $self->{clustered} if(defined($self->{clustered}));
+  return $self->{gff} ? 'strict' : 'permissive';
 }
 
 sub _genes_within {
