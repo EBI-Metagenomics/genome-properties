@@ -700,6 +700,12 @@ sub parseSteps {
         my $ipr = $1;
         my $sig = $2;
         my $suf = $3;
+        if($suf ne 'sufficient' and $suf ne 'clustered'){
+          confess("\nUnknown evidence qualifier |$suf| on line: $l\n"
+            . "Allowed qualifiers are sufficient or clustered.\n\n"
+            . "-" x 80
+            . "\n" );
+        }
         my $nl = $file->[$$i + 1];
         my $go = [];
         while($nl =~ /^TG\s{2}(GO\:\d+)/){

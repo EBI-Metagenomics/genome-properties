@@ -73,6 +73,17 @@ sub skip {
   return($self->{skip});
 }
 
+sub add_clustered_match {
+  my ($self, $acc, $seq) = @_;
+  push(@{ $self->{clustered_matches}->{$acc} }, $seq);
+}
+
+#Sequences matching clustered evidence that passed the proximity check.
+sub clustered_matches {
+  my ($self, $acc) = @_;
+  return($self->{clustered_matches}->{$acc});
+}
+
 
 sub required {
   my ($self) = @_;

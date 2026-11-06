@@ -38,7 +38,16 @@ The various flags/options are described here:
   
   Optional:
   eval_order <filename>    : File containing an optimal evaluation order.
-  
+
+  == Clustered evidence ==
+  gff <filename>           : GFF3 file of CDS positions. CDS features are matched to the
+                           : InterProScan sequence identifiers by their ID, Name,
+                           : locus_tag or protein_id attribute.
+  cluster_distance <bp>    : Maximum gap between the two genes (default 3000).
+  clustered <mode>         : strict (default) or permissive. In strict mode clustered
+                           : evidence is ignored when no gff file is given. Permissive
+                           : treats clustered evidence like any other evidence.
+
   == Output options ==
   name <name>              : Output file tag name (required). This will be prefixed 
                              depending on the outputs requested.
@@ -50,6 +59,10 @@ The various flags/options are described here:
 Example command executed from within /code/scripts/ 
 
 $ ./assign_genome_properties.pl -matches INPUT_FILE.tsv -all -name OUTPUT_FILE -gpdir ../../flatfiles/ -gpff genomeProperties.txt -outdir ~user/analysis/ -outfiles summary
+
+To use clustered evidence, add the gene positions, for example the GFF3 from Prokka or Bakta:
+
+$ ./assign_genome_properties.pl -matches INPUT_FILE.tsv -gff INPUT_FILE.gff -all -name OUTPUT_FILE -gpdir ../../flatfiles/ -gpff genomeProperties.txt -outdir ~user/analysis/ -outfiles summary
 
 ```
 

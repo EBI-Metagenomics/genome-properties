@@ -12,6 +12,7 @@ use Text::Wrap;
 use LWP::Simple;
 use JSON;
 use IO::Uncompress::Gunzip qw($GunzipError);
+use List::Util qw(min max);
 
 sub new {
   my $class = shift;
@@ -24,6 +25,12 @@ sub new {
   $self->{project_name}   = "DEFAULT";
   $self->{debug}          = 0;
   $self->{read_sig}       = 0;
+  #Clustered evidence (HMM-CLUST in the JCVI release) only counts when the
+  #gene is within this many base pairs of a gene found by other evidence.
+  $self->{cluster_distance} = 3000;
+  #strict: clustered evidence needs gene positions (-gff), otherwise it is ignored.
+  #permissive: clustered evidence is treated like any other evidence.
+  $self->{clustered}        = 'strict';
 
   #These should be constants;
   $self->{_skip}          = { CATEGORY => 1, ROOT => 1, SUMMARY => 1 };
@@ -175,7 +182,9 @@ sub print_long {
     
     foreach my $ev (@{$step->get_evidence}){
       if($ev->interpro){
-        $report .= ".\t.\tINTERPRO: ".$ev->interpro."; ".$ev->accession."\n";
+        $report .= ".\t.\tINTERPRO: ".$ev->interpro."; ".$ev->accession;
+        $report .= " (clustered)" if($ev->clustered);
+        $report .= "\n";
       }elsif($ev->gp){
         $report .= ".\t.\tGENPROP: ".$ev->gp."\n";
       }else{
@@ -214,8 +223,11 @@ sub print_matches {
           my $eDESC;
           my $seenSeq;
           if($ev->interpro){
-            if($self->get_family( $ev->accession ) ){
-              my @seqs = @{ $self->get_family( $ev->accession ) };
+            #Only report the clustered matches that passed the proximity check.
+            my $seqsRef = $self->_uses_clustered_rule($ev) ? $step->clustered_matches($ev->accession)
+                                                          : $self->get_family( $ev->accession );
+            if($seqsRef){
+              my @seqs = @{ $seqsRef };
               foreach my $s (@seqs){
                 #next if($seenSeq->{$s});
                 my $report = $ev->interpro."\t".$ev->accession."\t$s\t";
@@ -430,7 +442,14 @@ sub set_options {
   foreach my $k (keys %{$options}){
     $self->{$k} = $options->{$k};
   }
-  
+
+  if($self->{clustered} ne 'strict' and $self->{clustered} ne 'permissive'){
+    die "The clustered option must be strict or permissive\n";
+  }
+  if($self->{cluster_distance} !~ /^\d+$/){
+    die "The cluster_distance option must be a whole number of base pairs\n";
+  }
+
   #TODO: die on fatal option omitions.
   return 1;
 }
@@ -648,7 +667,13 @@ sub evaluate_property {
       $def->evaluated(0);
       return;
     }
+  }
 
+  #Clustered evidence depends on where the other steps were found,
+  #so it can only be checked once every step has been evaluated.
+  $self->evaluate_clustered_steps($def);
+
+  foreach my $step (@{ $def->get_steps }){
     #Skipped steps (no evidence) are ignored entirely, matching the
     #pygenprop reimplementation which never creates a step without
     #functional elements/evidence.
@@ -763,6 +788,9 @@ sub evaluate_step {
         if(!$self->annotated){
           $self->annotate_sequences
         }
+        #Clustered evidence is handled by evaluate_clustered_steps, and takes
+        #no part in the sufficient/non-sufficient rule below.
+        next EV if($self->_uses_clustered_rule($evObj));
         #See if the accession has been found
         if($self->get_family( $evObj->accession ) ){
           $ev_succeed = 1;
@@ -804,6 +832,98 @@ sub evaluate_step {
     #$step->matched_sequences($mSeqs);
     #Need to get the sequences in here.
   }
+}
+
+#Equivalent of the JCVI HMM-CLUST method: a gene matching clustered evidence
+#only fills a step if it lies within cluster_distance of a gene that matched
+#non-clustered evidence for a different step of the same property.
+sub evaluate_clustered_steps {
+  my($self, $def) = @_;
+
+  return if($self->{clustered} eq 'permissive');
+
+  my @clusteredSteps;
+  foreach my $step (@{ $def->get_steps }){
+    next if($step->found);
+    if(grep { $_->interpro and $_->clustered } @{ $step->get_evidence }){
+      push(@clusteredSteps, $step);
+    }
+  }
+  return unless(@clusteredSteps);
+
+  #Without gene positions clustered evidence cannot be tested, so it is ignored.
+  my $positions = $self->gene_positions;
+  return unless($positions);
+
+  my %anchors;
+  foreach my $step (@{ $def->get_steps }){
+    foreach my $ev (@{ $step->get_evidence }){
+      next if(!$ev->interpro or $ev->clustered);
+      my $seqs = $self->get_family( $ev->accession ) or next;
+      push(@{ $anchors{ $step->order } }, grep { $positions->{$_} } @{$seqs});
+    }
+  }
+
+  foreach my $step (@clusteredSteps){
+    my @others = map { @{ $anchors{$_} } } grep { $_ ne $step->order } keys %anchors;
+    next unless(@others);
+    foreach my $ev (grep { $_->interpro and $_->clustered } @{ $step->get_evidence }){
+      my $seqs = $self->get_family( $ev->accession ) or next;
+      SEQ: foreach my $s (@{$seqs}){
+        next SEQ unless($positions->{$s});
+        foreach my $anchor (@others){
+          next if($anchor eq $s);
+          if($self->_genes_within( $positions->{$s}, $positions->{$anchor} )){
+            $step->add_clustered_match( $ev->accession, $s );
+            $step->found(1);
+            next SEQ;
+          }
+        }
+      }
+    }
+  }
+}
+
+sub _uses_clustered_rule {
+  my($self, $ev) = @_;
+  return ($ev->clustered and $self->{clustered} eq 'strict') ? 1 : 0;
+}
+
+sub _genes_within {
+  my($self, $pos1, $pos2) = @_;
+
+  return 0 if($pos1->{contig} ne $pos2->{contig});
+  #Negative when the two genes overlap.
+  my $gap = max($pos1->{start}, $pos2->{start}) - min($pos1->{end}, $pos2->{end});
+  return ($gap <= $self->{cluster_distance}) ? 1 : 0;
+}
+
+#Reads CDS positions from a GFF3 file. Proteins are matched to the InterProScan
+#sequence identifiers using the ID, Name, locus_tag or protein_id attributes.
+sub gene_positions {
+  my($self) = @_;
+
+  return unless($self->{gff});
+  if(!$self->{gene_positions}){
+    my %positions;
+    open(my $fh, '<', $self->{gff}) or croak("Could not open GFF file ".$self->{gff}."\n");
+    while(my $l = <$fh>){
+      last if($l =~ /^##FASTA/);
+      next if($l =~ /^#/);
+      chomp($l);
+      my @col = split(/\t/, $l);
+      next unless(scalar(@col) == 9 and $col[2] eq 'CDS');
+      my $pos = { contig => $col[0], start => min($col[3], $col[4]), end => max($col[3], $col[4]) };
+      foreach my $tag (qw(ID Name locus_tag protein_id)){
+        if($col[8] =~ /(?:^|;)$tag=([^;]+)/){
+          $positions{$1} = $pos;
+        }
+      }
+    }
+    close($fh);
+    $self->{gene_positions} = \%positions;
+  }
+  return $self->{gene_positions};
 }
 
 sub read_properties {

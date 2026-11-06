@@ -31,6 +31,9 @@ GetOptions ( \%options,
 			        'name=s',
               'debug',
               'help',
+              'gff=s',
+              'cluster_distance=i',
+              'clustered=s',
               'eval_order=s') or die "Failed to parse options\n";;
 
 
@@ -92,6 +95,20 @@ gpff  <filename>         : Name of the flatfile
 
 Optional:
 eval_order <filename>    : File containing an optimal evaluation order.
+
+== Clustered evidence ==
+
+Evidence marked "clustered" in the DESC files only fills a step when the gene
+is close to a gene found by other evidence for a different step of the same
+property (the HMM-CLUST method of the JCVI release).
+
+gff <filename>           : GFF3 file of CDS positions. CDS features are matched to the
+                         : InterProScan sequence identifiers by their ID, Name,
+                         : locus_tag or protein_id attribute.
+cluster_distance <bp>    : Maximum gap between the two genes (default 3000).
+clustered <mode>         : strict (default) or permissive. In strict mode clustered
+                         : evidence is ignored when no gff file is given. Permissive
+                         : treats clustered evidence like any other evidence.
 
 == Output options ==
 

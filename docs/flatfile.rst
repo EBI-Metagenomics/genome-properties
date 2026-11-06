@@ -69,7 +69,7 @@ The tags used in the DESC file are listed below, along with the description of t
 +----+----------------------------------------------------+
 | RQ | Required step                                      |
 +----+----------------------------------------------------+
-| EV | Evidence (includes whether sufficient)             |
+| EV | Evidence (includes whether sufficient or clustered)|
 +----+----------------------------------------------------+
 | TG | Gene Ontology (GO) ID                              |
 +----+----------------------------------------------------+
@@ -79,6 +79,20 @@ The tags used in the DESC file are listed below, along with the description of t
 The DESC file is formatted such that a single tag is included on each line, followed by 2 blank spaces, followed by the value of the field. 
 
 In the case of the property description (CC) and private notes (**) fields, the information may stretch accross multiple lines. The line length is limited to 80 characters (including the tag) and so any subsequent lines used must also carry the tag. See the PATHWAY example below.
+
+An EV line names the InterPro entry and the signature, and can end with one qualifier:
+
+- ``sufficient`` marks evidence that on its own identifies the step.
+- ``clustered`` marks evidence from a broad model that only counts when the matching gene lies close to the rest of the property. This is the HMM-CLUST method of the original JCVI Genome Properties: a gene matching clustered evidence fills the step only if it is within 3000 bp (by default) of a gene that matched non-clustered evidence for a different step of the same property. Calculating clustered evidence needs gene positions; see `Calculating <calculating.html>`_.
+
+.. code-block:: none
+
+  SN  4
+  ID  Clustered regulatory genes
+  DN  Clustered regulatory genes
+  RQ  0
+  EV  IPR000524; PF00392; clustered;
+  EV  IPR014036; PF00455; clustered;
 
 
 .. code-block:: none
