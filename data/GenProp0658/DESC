@@ -51,6 +51,9 @@ CC  the biosynthetic genes.
 **  OLD PRIVATE COMMENT: How general is the allosteric regulatory control
 **  by cyclic-di-GMP?  Look for cyclases of the GGDEF family and
 **  phosphodiesterases.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Cellulose synthase, catalytic subunit CelA
@@ -105,6 +108,6 @@ SN  8
 ID  Clustered endoglucanase (cellulase?)
 DN  Clustered endoglucanase (cellulase?)
 RQ  0
-EV  IPR002037; PF01270;
+EV  IPR002037; PF01270; clustered;
 TG  GO:0030244;
 //

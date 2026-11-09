@@ -17,12 +17,15 @@ CC  precursor, a fused cyclodehydratase/docking scaffold fusion protein,
 CC  and a kinase and cyclase homology domain-containing multidomain protein.
 **  ntsc09, gbm, Delftia acidovorans, other Burks, etc.
 **  Evidence for step 1 is also used for GP0807 (GUILD).
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Cyclodeydratase/docking scaffold fusion protein
 DN  Cyclodeydratase/docking scaffold fusion protein
 RQ  1
-EV  IPR022291; TIGR03882;
+EV  IPR022291; TIGR03882; clustered;
 --
 SN  2
 ID  TOMM system kinase/cyclase multidomain protein

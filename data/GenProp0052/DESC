@@ -45,6 +45,9 @@ CC  analogous [1,2,3].
 **  medium, avirulence proteins into plant cell.
 **  Evidence for steps 13 and 24 is the same (IPR006972).
 **  Evidence for step 21 is also used for GP0292, GP0457 and GP0458.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  HpaP
@@ -182,14 +185,14 @@ TG  GO:0030254;
 SN  21
 ID  Proximal regulatory components
 RQ  0
-EV  IPR018060; PF00165;
-EV  IPR001801; PF00816;
+EV  IPR018060; PF00165; clustered;
+EV  IPR001801; PF00816; clustered;
 --
 SN  22
 ID  Secretin, type III associated
 DN  NolW-like
 RQ  0
-EV  IPR005644; PF03958;
+EV  IPR005644; PF03958; clustered;
 TG  GO:0030254;
 --
 SN  24

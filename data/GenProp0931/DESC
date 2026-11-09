@@ -16,6 +16,9 @@ CC  and pyruvoyl groups to a variable extent.
 **  Evidence for step 2 is also used for GP0655 (IPR017473).
 **  Evidence for step 14 is also used for GP0474 (IPR023485).
 **  Evidence for step 16 is also used for GP0724, GP0912 (GUILD), GP0968 (IPR002797).
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  GDP-L-fucose biosynthesis
@@ -27,7 +30,7 @@ SN  2
 ID  Undecaprenyl-phosphate glucose phosphotransferase
 DN  Undecaprenyl-phosphate glucose phosphotransferase/WcaJ
 RQ  0
-EV  IPR017473; TIGR03023;
+EV  IPR017473; TIGR03023; clustered;
 --
 SN  3
 ID  Colanic acid biosynthesis glycosyl transferase WcaA
@@ -75,7 +78,7 @@ SN  10
 ID  Colanic acid biosynthesis pyruvyl transferase wcaK
 DN  Colanic acid biosynthesis pyruvyl transferase wcaK/wcaK
 RQ  1
-EV  IPR007345; PF04230;
+EV  IPR007345; PF04230; clustered;
 EV  IPR023918; TIGR04006;
 --
 SN  11
@@ -99,17 +102,17 @@ SN  14
 ID  Low molecular weight protein-tyrosine-phosphatase wzb
 DN  Low molecular weight protein-tyrosine-phosphatase wzb/wzb
 RQ  1
-EV  IPR023485; PF01451;
+EV  IPR023485; PF01451; clustered;
 --
 SN  15
 ID  Tyrosine-protein kinase wzc
 DN  Tyrosine-protein kinase wzc/wzc
 RQ  1
-EV  IPR005702; TIGR01007;
+EV  IPR005702; TIGR01007; clustered;
 --
 SN  16
 ID  Lipopolysaccharide biosynthesis protein WzxC
 DN  Lipopolysaccharide biosynthesis protein WzxC/wzxC
 RQ  1
-EV  IPR002797; PF01943;
+EV  IPR002797; PF01943; clustered;
 //

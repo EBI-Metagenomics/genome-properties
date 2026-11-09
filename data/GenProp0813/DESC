@@ -22,6 +22,9 @@ CC  E. coli is not found in all genomes harboring the rest of the operon
 CC  and may be replaced by other non-homologous transporters located
 CC  elsewhere in the genomes. This property appears to be limited to the
 CC  alpha and gamma proteobacteria.  
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  FMN-dependent luciferase family monoxygenase RutA
@@ -51,7 +54,7 @@ SN  5
 ID  Nitroreductase family protein RutE
 DN  Nitroreductase family protein RutE
 RQ  0
-EV  IPR029479; PF00881;
+EV  IPR029479; PF00881; clustered;
 --
 SN  6
 ID  Flavin reductase RutF

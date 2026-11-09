@@ -22,6 +22,9 @@ CC  differences appear to be profound.
 **  SAG_1039=PF06013, SAG_1038, ,,,SAG_1033=EccC. EssA is massively
 **  divergent and more widespread than authors realize.
 **  Evidence for step 4 is also used for GP0904.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Type VII secretion protein EsaA
@@ -45,8 +48,8 @@ SN  4
 ID  Type VII secretion target, WXG100 family
 DN  Type VII secretion target, WXG100 family
 RQ  1
-EV  IPR010310; PF06013;
-EV  IPR010310; TIGR03930;
+EV  IPR010310; PF06013; clustered;
+EV  IPR010310; TIGR03930; clustered;
 EV  IPR021477; TIGR04197;
 --
 SN  5

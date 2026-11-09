@@ -36,6 +36,9 @@ CC  phosphonate, 2-aminoethylphosphonate.
 **  Evidence for step 8 is also used for GP0292, GP0457, GP0458 and GP0917 
 **  (IPR001670).
 **  Evidence for step 8 is also used for GP0713 (IPR017656).
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  PEP phosphomutase
@@ -62,33 +65,33 @@ SN  4
 ID  Proximal marker of exopolysaccharide biosynthesis
 DN  Proximal marker of exopolysaccharide biosynthesis
 RQ  0
-EV  IPR002797; PF01943;
+EV  IPR002797; PF01943; clustered;
 --
 SN  5
 ID  Proximal marker of lipid biosynthesis
 DN  Proximal marker of lipid biosynthesis
 RQ  0
-EV  IPR000462; PF01066;
+EV  IPR000462; PF01066; clustered;
 --
 SN  6
 ID  Proximal marker of natural products biosynthesis
 DN  Squalene cyclase
 RQ  0
-EV  IPR018333; TIGR01787;
+EV  IPR018333; TIGR01787; clustered;
 --
 SN  7
 ID  Proximal nucleotidyltransferase domain
 DN  Proximal nucleotidyltransferase domain
 RQ  0
-EV  IPR004821; PF01467;
-EV  IPR005835; PF00483;
-EV  IPR003329; PF02348;
+EV  IPR004821; PF01467; clustered;
+EV  IPR005835; PF00483; clustered;
+EV  IPR003329; PF02348; clustered;
 --
 SN  8
 ID  Proximal oxidoreductases/oxygenases
 DN  Proximal oxidoreductases/oxygenases
 RQ  0
-EV  IPR001670; PF00465;
-EV  IPR017656; TIGR03250;
-EV  IPR005123; PF03171;
+EV  IPR001670; PF00465; clustered;
+EV  IPR017656; TIGR03250; clustered;
+EV  IPR005123; PF03171; clustered;
 //

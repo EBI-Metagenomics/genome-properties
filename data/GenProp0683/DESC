@@ -10,12 +10,15 @@ CC  membrane, and couples the enzyme to the quinone pool for electron
 CC  transport.
 **  No rule - running off SIMPLE-CLUST.
 **  Evidence for step 1 is also used for GP0682.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Cytochrome c nitrite reductase, c552 subunit
 DN  Cytochrome c nitrite reductase, c552 subunit/NrfA
 RQ  1
-EV  IPR003321; PF02335;
+EV  IPR003321; PF02335; clustered;
 --
 SN  2
 ID  Cytochrome c nitrate reductase, small subunit

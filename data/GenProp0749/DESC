@@ -12,6 +12,9 @@ CC  protein for the ABC transporters responsible for choline uptake. It
 CC  appears that several different periplasmic binding proteins interact 
 CC  with the same permease and ATP-binding subunit.
 **  Evidence for step 2 also occurs in GP0748 (IPR017783).
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Putative choline sulfate transcription factor
@@ -23,7 +26,7 @@ SN  2
 ID  Choline sulfate periplasmic binding protien
 DN  Choline sulfate periplasmic binding protien
 RQ  1
-EV  IPR017783; TIGR03414;
+EV  IPR017783; TIGR03414; clustered;
 --
 SN  3
 ID  Choline-sulfatase

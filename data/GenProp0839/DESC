@@ -7,6 +7,9 @@ CC  This complex can serve as an alternative to the 2-oxoglutarate
 CC  dehydrogenase system of the TCA cycle.
 **  Evidence for step 2 is also used for GP0842.
 **  Evidence for step 3 is also used for GP0842.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Alpha subunit (TPP binding domain)
@@ -18,14 +21,14 @@ SN  2
 ID  Beta subunit (TPP enzyme)
 DN  Beta subunit (TPP enzyme)
 RQ  1
-EV  IPR011766; PF02775;
+EV  IPR011766; PF02775; clustered;
 EV  IPR011896; TIGR02177;
 --
 SN  3
 ID  Ferredoxin (4Fe-4S binding domain)
 DN  Ferredoxin (4Fe-4S binding domain)
 RQ  0
-EV  IPR017896; PF00037;
+EV  IPR017896; PF00037; clustered;
 --
 SN  4
 ID  Gamma subunit

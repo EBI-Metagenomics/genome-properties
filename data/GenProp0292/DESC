@@ -61,12 +61,15 @@ CC  source.
 **  Evidence for step 8 is also used for GP0294.
 **  Evidence for step 16 is also used for GP0269.
 **  Evidence for step 17 is also used for GP0052, GP0457 and GP0458.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Phosphotransacetylase
 DN  Phosphate acetyl/butaryl transferase
 RQ  0
-EV  IPR002505; PF01515;
+EV  IPR002505; PF01515; clustered;
 TG  GO:0046336;
 --
 SN  2
@@ -101,16 +104,16 @@ SN  6
 ID  Acetaldehyde dehydrogenase (acetylating)
 DN  Acetaldehyde dehydrogenase, acetylating/eutE
 RQ  1
-EV  IPR013357; TIGR02518;
+EV  IPR013357; TIGR02518; clustered;
 TG  GO:0046336;
-EV  IPR015590; PF00171;
+EV  IPR015590; PF00171; clustered;
 TG  GO:0046336;
 --
 SN  7
 ID  Alcohol dehydrogenase, ethanolamine operon related
 DN  Alcohol dehydrogenase, iron-type/glycerol dehydrogenase gldA/eutG
 RQ  1
-EV  IPR001670; PF00465;
+EV  IPR001670; PF00465; clustered;
 TG  GO:0046336;
 --
 SN  8
@@ -133,28 +136,28 @@ SN  10
 ID  Microcompartment coat protein
 DN  Microcompartment protein/eutM
 RQ  1
-EV  IPR000249; PF00936;
+EV  IPR000249; PF00936; clustered;
 TG  GO:0046336;
 --
 SN  11
 ID  Carboxysome coat protein homolog
 DN  Ethanolamine utilization protein EutN/carboxysome structural protein Ccml
 RQ  1
-EV  IPR004992; PF03319;
+EV  IPR004992; PF03319; clustered;
 TG  GO:0046336;
 --
 SN  12
 ID  Ethanolamine utilization protein, EutP
 DN  Ethanolamine/propanediol utilisation protein, EutP/PduV
 RQ  0
-EV  IPR012381; TIGR02528;
+EV  IPR012381; TIGR02528; clustered;
 TG  GO:0046336;
 --
 SN  13
 ID  Ethanolamine utilization protein, PduL homolog
 DN  Phosphate propanoyltransferase
 RQ  0
-EV  IPR008300; PF06130;
+EV  IPR008300; PF06130; clustered;
 TG  GO:0046336;
 --
 SN  14
@@ -168,26 +171,26 @@ SN  15
 ID  Ethanolamine utilization protein, EutQ
 DN  Ethanolamine utilisation EutQ
 RQ  0
-EV  IPR010424; PF06249;
+EV  IPR010424; PF06249; clustered;
 TG  GO:0046336;
 --
 SN  16
 ID  Cob(I)alamin adenosyltransferase
 DN  Cobalamin adenosyltransferase-like/eutT
 RQ  0
-EV  IPR016030; PF01923;
+EV  IPR016030; PF01923; clustered;
 TG  GO:0046336;
 --
 SN  17
 ID  Regulatory components
 DN  Regulatory components
 RQ  0
-EV  IPR006208; PF00007;
+EV  IPR006208; PF00007; clustered;
 TG  GO:0046336;
-EV  IPR011495; PF07568;
+EV  IPR011495; PF07568; clustered;
 TG  GO:0046336;
-EV  IPR001789; PF00072;
+EV  IPR001789; PF00072; clustered;
 TG  GO:0046336;
-EV  IPR018060; PF00165;
+EV  IPR018060; PF00165; clustered;
 TG  GO:0046336;
 //

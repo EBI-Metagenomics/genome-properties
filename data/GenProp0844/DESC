@@ -26,12 +26,15 @@ CC  for glycosylation rather than export.
 **  to SecA (TIGR00963), and species with putative TIGR03715 signal
 **  peptide. TIGR04224 hits too narrowly (just Strep).
 **  Evidence for step 1 is also used for GP0845 (IPR022263).
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Serine-rich glycoprotein
 DN  Serine-rich glycoprotein/S_rich
 RQ  0
-EV  IPR022263; TIGR03715;
+EV  IPR022263; TIGR03715; clustered;
 EV  IPR026465; TIGR04224;
 --
 SN  2

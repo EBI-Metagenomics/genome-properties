@@ -9,6 +9,9 @@ CC  generating acetate and inorganic phosphate as products.
 **  Evidence for step 3 is also used for GP0724 (IPR017656).
 **  Evidence for step 4 is also used for GP0457 and GP0458 (IPR014036).
 **  Evidence for step 4 is also used for GP0458 and GP0736 (IPR000524).
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Phosphonoacetate hydrolase
@@ -32,8 +35,8 @@ SN  4
 ID  Clustered regulatory genes
 DN  Clustered regulatory genes
 RQ  0
-EV  IPR000524; PF00392;
-EV  IPR014036; PF00455;
+EV  IPR000524; PF00392; clustered;
+EV  IPR014036; PF00455; clustered;
 --
 SN  5
 ID  2-aminoethylphosphonate transporters

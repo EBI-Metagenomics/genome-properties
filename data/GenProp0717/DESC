@@ -10,6 +10,9 @@ CC  2-oxoglutarate.
 **  Evidence for step 3 is also used for GP0292, GP0294, GP0457 and GP0717.
 **  Evidence for step 4 is also used for GP0714, GP0715 and GP0716.
 **  Evidence for step 4 is also used for GP0457 (IPR011701).
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Glucarate dehydratase (EC 4.2.1.40)
@@ -22,7 +25,7 @@ SN  2
 ID  5-dehydro-4-deoxyglucarate dehydratase (EC 4.2.1.41)
 DN  5-dehydro-4-deoxyglucarate dehydratase (EC 4.2.1.41)
 RQ  1
-EV  IPR002220; PF00701;
+EV  IPR002220; PF00701; clustered;
 TG  GO:0019394;
 EV  IPR017655; TIGR03249; sufficient;
 TG  GO:0019394;
@@ -31,15 +34,15 @@ SN  3
 ID  2-oxoglutarate semialdehyde dehydrogenase (EC 1.2.1.26)
 DN  2-oxoglutarate semialdehyde dehydrogenase (EC 1.2.1.26)
 RQ  1
-EV  IPR015590; PF00171;
+EV  IPR015590; PF00171; clustered;
 TG  GO:0019394;
 --
 SN  4
 ID  D-glucarate transorter, putative
 DN  D-glucarate transorter, putative
 RQ  0
-EV  IPR004744; TIGR00893;
+EV  IPR004744; TIGR00893; clustered;
 TG  GO:0019394;
-EV  IPR011701; PF07690;
+EV  IPR011701; PF07690; clustered;
 TG  GO:0019394;
 //

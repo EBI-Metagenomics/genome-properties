@@ -41,18 +41,21 @@ CC  type. Repeats typically are 37 base pairs long.
 **  Evidence for step 4 is also used for GP0021 (GUILD), GP0313, GP0317, 
 **  GP0319, GP0320, GP0768 and GP0922.
 **  Evidence for step 5 is also used for GP0021 (GUILD)
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Cas1, Dpsyc region
 DN  CRISPR-associated protein Cas1
 RQ  1
-EV  IPR002729; TIGR00287;
+EV  IPR002729; TIGR00287; clustered;
 --
 SN  2
 ID  Cas2, Dpsyc region
 DN  CRISPR-associated endonuclease Cas2
 RQ  1
-EV  IPR021127; TIGR01573;
+EV  IPR021127; TIGR01573; clustered;
 --
 SN  3
 ID  Cas3, Dpsyc subtype variant
@@ -64,7 +67,7 @@ SN  4
 ID  Cas4, Dpsyc region
 DN  CRISPR-associated protein Cas4
 RQ  1
-EV  IPR013343; TIGR00372;
+EV  IPR013343; TIGR00372; clustered;
 --
 SN  5
 ID  Csb1 (GSU0053)

@@ -23,6 +23,9 @@ CC  which is presumably excreted.
 **  Evidence for step 3 is also used for GP0686.
 **  Evidence for step 4 is also used for GP0686.
 **  Evidence for step 6 is also used for GP0686.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Carbamate kinase (EC 2.7.2.2)
@@ -34,7 +37,7 @@ SN  2
 ID  Source of allantoin
 DN  Source of allantoin
 RQ  0
-EV  IPR012681; TIGR00800;
+EV  IPR012681; TIGR00800; clustered;
 EV  GenProp0688;
 --
 SN  3
@@ -47,7 +50,7 @@ SN  4
 ID  Allantoate amidohydrolase (EC 3.5.3.9)
 DN  Allantoate amidohydrolase (EC 3.5.3.9)
 RQ  1
-EV  IPR010158; TIGR01879;
+EV  IPR010158; TIGR01879; clustered;
 EV  IPR017591; TIGR03176; sufficient;
 EV  IPR005164; TIGR02961; sufficient;
 --
