@@ -6,12 +6,15 @@ TH  0
 CC  This property indicates the presence of gene pairs, where one member is
 CC  a sulfatase, the other a radical SAM enzyme for its anaerobic
 CC  maturation. 
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Sulfatase maturase
 DN  Sulfatase maturase
 RQ  1
-EV  IPR023867; TIGR03942;
+EV  IPR023867; TIGR03942; clustered;
 --
 SN  2
 ID  Anaerobic sulfatase

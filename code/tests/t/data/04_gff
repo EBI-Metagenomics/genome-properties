@@ -1,0 +1,8 @@
+##gff-version 3
+contig_1	Prokka	CDS	1000	2080	.	+	0	ID=phnA_1;locus_tag=phnA_1
+contig_1	Prokka	CDS	2100	3200	.	+	0	ID=phnW_1;locus_tag=phnW_1
+contig_1	Prokka	CDS	3800	4520	.	-	0	ID=gntR_near;locus_tag=gntR_near
+contig_2	Prokka	CDS	500	1190	.	+	0	ID=gntR_far;locus_tag=gntR_far
+##FASTA
+>contig_1
+ACGT

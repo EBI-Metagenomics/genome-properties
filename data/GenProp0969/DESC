@@ -5,6 +5,9 @@ AU  Haft DH
 TH  0
 CC  UDP-ManNAcA is a precursor in the biosynthesis of the entobacterial
 CC  common antigen.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Source of UDP-ManNAc
@@ -16,5 +19,5 @@ SN  2
 ID  UDP-N-acetyl-mannosamine dehydrogenase
 DN  UDP-N-acetyl-mannosamine dehydrogenase
 RQ  1
-EV  IPR017476; TIGR03026;
+EV  IPR017476; TIGR03026; clustered;
 //

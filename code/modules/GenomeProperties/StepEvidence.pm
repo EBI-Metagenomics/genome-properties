@@ -15,9 +15,20 @@ sub new {
 
 sub type {
   my ($self) = @_;
-  
+
   return $self->{type};
 
+}
+
+sub sufficient {
+  my ($self) = @_;
+  return (defined($self->{type}) and $self->{type} eq 'sufficient') ? 1 : 0;
+}
+
+#Formerly HMM-CLUST: only counts when the gene is near the rest of the property.
+sub clustered {
+  my ($self) = @_;
+  return (defined($self->{type}) and $self->{type} eq 'clustered') ? 1 : 0;
 }
 
 sub accession {

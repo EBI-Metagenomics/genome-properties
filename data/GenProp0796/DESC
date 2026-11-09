@@ -59,12 +59,15 @@ CC  produced as mature products in various lineages.
 **  Evidence for step 2 is also used for GP0794 and GP0912 (GUILD).
 **  Evidence for step 4 is also used for GP0724 and GP0793.
 **  Evidence for step 6 is also used in GP0232 and GP0912 (GUILD).
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  CMP-pseudaminic acid C7-N-acetyl amidotransferase
 DN  N-acetyl sugar amidotransferase (EC: 6.3.4.-)/PseA
 RQ  0
-EV  IPR020022; TIGR03573;
+EV  IPR020022; TIGR03573; clustered;
 --
 SN  2
 ID  UDP-GlcNAc C6-dehydratase/C4-reductase
@@ -83,7 +86,7 @@ ID  Pseudaminic acid CMP-transferase
 DN  Pseudaminic acid CMP-transferase (EC:2.7.7.-)/PseF
 RQ  1
 EV  IPR020039; TIGR03584;
-EV  IPR003329; PF02348;
+EV  IPR003329; PF02348; clustered;
 --
 SN  5
 ID  Possible pseudaminic acid biosynthesis UDP hydrolase
@@ -96,7 +99,7 @@ ID  Possible pseudaminic acid biosynthesis N-acetyl transferase
 DN  Pseudaminic acid biosynthesis N-acetyl transferase/PseH
 RQ  1
 EV  IPR020036; TIGR03585;
-EV  IPR000182; PF00583;
+EV  IPR000182; PF00583; clustered;
 --
 SN  7
 ID  Pseudaminic acid synthase (pyruvate condensing enzyme)

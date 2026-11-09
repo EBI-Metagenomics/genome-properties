@@ -38,6 +38,9 @@ CC  element for this genome property.
 **  will count if, as in Bacillus, it is a second 6S and has inverse
 **  regulation.  WE NEED to update property, then DO PARTIAL PHYLOGENETIC
 **  PROFILING. DHH.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  6S structural RNA
@@ -48,5 +51,5 @@ SN  2
 ID  YgfA linked gene
 DN  YgfA linked gene/ygfA
 RQ  0
-EV  IPRXXXX; TIGR02727;
+EV  IPRXXXX; TIGR02727; clustered;
 //

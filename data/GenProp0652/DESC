@@ -23,6 +23,9 @@ CC  the PEP-CTERM/exopolysaccharide system.
 **  Evidence for step 3 is also used for GP0326.
 **  Evidence for step 7 is also used for GP0259.
 **  Evidence for step 23 is also used for GP0968.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  ATPase, exosortase type 1 region
@@ -34,14 +37,14 @@ SN  2
 ID  Exosortase EpsH, type 1
 DN  Exosortase EpsH, type 1
 RQ  1
-EV  IPR013426; TIGR02602;
+EV  IPR013426; TIGR02602; clustered;
 EV  IPR017540; TIGR03109; sufficient;
 --
 SN  3
 ID  EpsI
 DN  EpsI
 RQ  0
-EV  IPR014263; TIGR02914;
+EV  IPR014263; TIGR02914; clustered;
 --
 SN  4
 ID  Hydrolases (1 and 2), exosortase system type 1 associated
@@ -66,7 +69,7 @@ SN  7
 ID  Clustered asparagine synthase homolog
 DN  Clustered asparagine synthase homolog
 RQ  0
-EV  IPR006426; TIGR01536;
+EV  IPR006426; TIGR01536; clustered;
 EV  IPR017539; TIGR03108; sufficient;
 --
 SN  8

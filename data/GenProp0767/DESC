@@ -18,12 +18,15 @@ CC  product. The vsr gene typically is found very close to the dcm gene,
 CC  and is essentially restricted to a subset of those genomes that carry
 CC  dcm.
 **  Starting with TIGR00632, very short patch repair.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  DNA-cytosine methyltransferase
 DN  DNA-cytosine methyltransferase/dcm
 RQ  1
-EV  IPR001525; TIGR00675;
+EV  IPR001525; TIGR00675; clustered;
 --
 SN  2
 ID  Very short patch repair

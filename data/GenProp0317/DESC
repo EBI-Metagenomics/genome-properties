@@ -43,31 +43,34 @@ CC  Bacteria (with the notable exclusion of the Proteobacteria).
 **  GP0320 and GP0768.
 **  Evidence for step 8 is also used for GP0021 (GUILD)
 **  Evidence for step 11 is also used for GP0021 (GUILD)
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Cas1, Tneap region
 DN  CRISPR-associated protein Cas1
 RQ  1
-EV  IPR002729; TIGR00287;
+EV  IPR002729; TIGR00287; clustered;
 --
 SN  2
 ID  Cas2, Tneap region
 DN  CRISPR-associated endonuclease Cas2
 RQ  1
-EV  IPR021127; TIGR01573;
+EV  IPR021127; TIGR01573; clustered;
 --
 SN  3
 ID  Cas3, Tneap region
 DN  Helicase Cas3, CRISPR-associated
 RQ  1
-EV  IPR006483; TIGR01596;
-EV  IPR006474; TIGR01587;
+EV  IPR006483; TIGR01596; clustered;
+EV  IPR006474; TIGR01587; clustered;
 --
 SN  4
 ID  Cas4, Tneap region
 DN  CRISPR-associated protein Cas4
 RQ  1
-EV  IPR013343; TIGR00372;
+EV  IPR013343; TIGR00372; clustered;
 --
 SN  5
 ID  Cas5, Tneap specific variant
@@ -79,7 +82,7 @@ SN  6
 ID  Cas6, Tneap region
 DN  CRISPR-associated protein, Cas6
 RQ  1
-EV  IPR010156; TIGR01877;
+EV  IPR010156; TIGR01877; clustered;
 --
 SN  7
 ID  Cst1
@@ -91,5 +94,5 @@ SN  8
 ID  Cst2, DevR family regulator
 DN  CRISPR-associated protein Cas7, subtype I-B/Tneap
 RQ  1
-EV  IPR013414; TIGR02585;
+EV  IPR013414; TIGR02585; clustered;
 //

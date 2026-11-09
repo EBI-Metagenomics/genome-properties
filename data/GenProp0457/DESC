@@ -78,16 +78,19 @@ CC  oligosaccharides.
 **  Evidence for step 6 is also used for GP0321.
 **  Evidence for step 7 is also used for GP0717 (IPR011701).
 **  Evidence for step 7 is also used for GP0828.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Clustered alcohol/aldehyde dehydrogenases
 DN  Clustered alcohol/aldehyde dehydrogenases
 RQ  0
-EV  IPR001670; PF00465;
+EV  IPR001670; PF00465; clustered;
 TG  GO:0019301;
-EV  IPR015590; PF00171;
+EV  IPR015590; PF00171; clustered;
 TG  GO:0019301;
-EV  IPR002347; PF00106;
+EV  IPR002347; PF00106; clustered;
 TG  GO:0019301;
 --
 SN  2
@@ -103,7 +106,7 @@ SN  3
 ID  Rhamnose epimerase
 DN  L-rhamnose mutarotase
 RQ  0
-EV  IPR008000; PF05336;
+EV  IPR008000; PF05336; clustered;
 TG  GO:0019301;
 EV  IPR013448; TIGR02625; sufficient;
 TG  GO:0019301;
@@ -125,7 +128,7 @@ SN  5
 ID  Rhamnulokinase (RhaB/RhuK)
 DN  Rhamnulokinase (RhaB/RhuK)
 RQ  1
-EV  IPR018484; PF00370;
+EV  IPR018484; PF00370; clustered;
 TG  GO:0019301;
 EV  IPR013449; TIGR02627; sufficient;
 TG  GO:0019301;
@@ -134,30 +137,30 @@ SN  6
 ID  Clustered regulatory components
 DN  Clustered regulatory components
 RQ  0
-EV  IPR018060; PF00165;
+EV  IPR018060; PF00165; clustered;
 TG  GO:0043463;
-EV  IPR014036; PF00455;
+EV  IPR014036; PF00455; clustered;
 TG  GO:0043463;
-EV  IPR001761; PF00532;
+EV  IPR001761; PF00532; clustered;
 TG  GO:0043463;
-EV  IPR001387; PF01381;
+EV  IPR001387; PF01381; clustered;
 TG  GO:0043463;
-EV  IPR000843; PF00356;
+EV  IPR000843; PF00356; clustered;
 TG  GO:0043463;
 --
 SN  7
 ID  Rhamnose transporters (RhaSTPQ)
 DN  Rhamnose transporters (RhaSTPQ)
 RQ  1
-EV  IPR011701; PF07690;
+EV  IPR011701; PF07690; clustered;
 TG  GO:0019301;
-EV  IPR005828; PF00083;
+EV  IPR005828; PF00083; clustered;
 TG  GO:0019301;
 EV  IPR004673; PF06379; sufficient;
 TG  GO:0019301;
-EV  IPR001851; PF02653;
+EV  IPR001851; PF02653; clustered;
 TG  GO:0019301;
-EV  IPR003439; PF00005;
+EV  IPR003439; PF00005; clustered;
 TG  GO:0019301;
 EV  IPR013459; TIGR02637; sufficient;
 TG  GO:0019301;

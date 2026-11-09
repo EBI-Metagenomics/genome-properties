@@ -1,0 +1,26 @@
+AC  GenProp0713
+DE  2-aminoethylphosphonate catabolism via phosphonoacetate
+TP  PATHWAY
+AU  Haft DH
+TH  1
+CC  Cut-down test copy: step 3 is required here so that clustered
+CC  evidence changes the property result.
+--
+SN  1
+ID  Phosphonoacetate hydrolase
+DN  Phosphonoacetate hydrolase
+RQ  1
+EV  IPR012710; TIGR02335; sufficient;
+--
+SN  2
+ID  2-aminoethylphosphonate--pyruvate transaminase
+DN  2-aminoethylphosphonate--pyruvate transaminase
+RQ  1
+EV  IPR012703; TIGR02326; sufficient;
+--
+SN  3
+ID  Clustered regulatory genes
+DN  Clustered regulatory genes
+RQ  1
+EV  IPR000524; PF00392; nearby;
+//

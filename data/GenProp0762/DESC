@@ -18,6 +18,9 @@ CC  chemoreceptors, but these may be different in different species and are
 CC  not currently included.
 **  NTL10EC2051 = cheZ  NTL10EC2052 = cheY  NTL10EC2053 = cheB  NTL10EC2054
 **  = cheR  NTL10EC2056 = cheW  NTL10EC2057 = cheA
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Chemotaxis histidine kinase CheA
@@ -43,7 +46,7 @@ ID  Chemotaxis methyltransferase CheR
 DN  Chemotaxis methyltransferase CheR/CheR
 RQ  0
 EV  IPRXXXX; 2066;
-EV  IPRXXXX; PF01739;
+EV  IPRXXXX; PF01739; clustered;
 --
 SN  5
 ID  Chemotaxis adaptor protein CheW
@@ -82,5 +85,5 @@ SN  10
 ID  Operonic Response Regulator Receiver domain protein
 DN  Operonic Response Regulator Receiver domain protein/RRR
 RQ  0
-EV  IPRXXXX; PF00072;
+EV  IPRXXXX; PF00072; clustered;
 //

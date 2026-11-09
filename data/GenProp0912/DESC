@@ -13,47 +13,50 @@ TH  0
 **  Evidence for step 12 is also used in GP1044.
 **  Evidence for step 13 is also used for GP0724, GP0931 and GP0968.
 **  Evidence for step 13 is also used for GP0932, GP0947, GP0953, GP0968 and GP0973.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Sugar activating enzymes: nucleotidyltransferases, cytidyltransferases, kinases
 DN  Sugar activating enzymes: nucleotidyltransferases, cytidyltransferases, kinases/activ
 RQ  0
-EV  IPRXXXX; PF02348;
-EV  IPRXXXX; PF00483;
-EV  IPR005907; TIGR01207;
-EV  IPRXXXX; PF00294;
+EV  IPRXXXX; PF02348; clustered;
+EV  IPRXXXX; PF00483; clustered;
+EV  IPR005907; TIGR01207; clustered;
+EV  IPRXXXX; PF00294; clustered;
 --
 SN  2
 ID  Glycosyltransferases
 DN  Glycosyltransferases/glyctr
 RQ  1
-EV  IPRXXXX; PF00535;
-EV  IPRXXXX; PF00534;
+EV  IPRXXXX; PF00535; clustered;
+EV  IPRXXXX; PF00534; clustered;
 --
 SN  3
 ID  Sugar isomerizatation and epimerization enzymes
 DN  Sugar isomerizatation and epimerization enzymes/isom
 RQ  0
-EV  IPR029767; TIGR00236;
-EV  IPRXXXX; PF05523;
-EV  IPR000888; TIGR01221;
-EV  IPRXXXX; PF02350;
-EV  IPRXXXX; PF03275;
+EV  IPR029767; TIGR00236; clustered;
+EV  IPRXXXX; PF05523; clustered;
+EV  IPR000888; TIGR01221; clustered;
+EV  IPRXXXX; PF02350; clustered;
+EV  IPRXXXX; PF03275; clustered;
 --
 SN  4
 ID  Sugar ring modification enzymes: synthases, lyases, aldolases, lactonases
 DN  Sugar ring modification enzymes: synthases, lyases, aldolases, lactonases/modif
 RQ  0
-EV  IPRXXXX; PF03102;
-EV  IPRXXXX; PF03328;
-EV  IPR005900; TIGR01198;
-EV  IPRXXXX; PF04055;
+EV  IPRXXXX; PF03102; clustered;
+EV  IPRXXXX; PF03328; clustered;
+EV  IPR005900; TIGR01198; clustered;
+EV  IPRXXXX; PF04055; clustered;
 --
 SN  5
 ID  Other known EPS enzymes (from synteny)
 DN  Other known EPS enzymes (from synteny)/other
 RQ  0
-EV  IPRXXXX; PF08889;
+EV  IPRXXXX; PF08889; clustered;
 --
 SN  6
 ID  EPS biosynthesis priming polyprenyl glycosylphosphotransferase
@@ -65,15 +68,15 @@ SN  7
 ID  Sugar redox enzymes: dehydrogenases, epimerase/dehydratases, oxidases, reductases
 DN  Sugar redox enzymes: dehydrogenases, epimerase/dehydratases, oxidases, reductases/redox
 RQ  0
-EV  IPRXXXX; PF01370;
-EV  IPRXXXX; PF00465;
-EV  IPRXXXX; PF00107;
-EV  IPRXXXX; PF01408;
-EV  IPRXXXX; PF00106;
-EV  IPRXXXX; PF00248;
-EV  IPRXXXX; PF00389;
-EV  IPRXXXX; PF01370;
-EV  IPRXXXX; PF01266;
+EV  IPRXXXX; PF01370; clustered;
+EV  IPRXXXX; PF00465; clustered;
+EV  IPRXXXX; PF00107; clustered;
+EV  IPRXXXX; PF01408; clustered;
+EV  IPRXXXX; PF00106; clustered;
+EV  IPRXXXX; PF00248; clustered;
+EV  IPRXXXX; PF00389; clustered;
+EV  IPRXXXX; PF01370; clustered;
+EV  IPRXXXX; PF01266; clustered;
 --
 SN  8
 ID  Transcriptional activators
@@ -84,38 +87,38 @@ SN  9
 ID  Sugar-associated domain of unknown function
 DN  Sugar-associated domain of unknown function/sugDUF
 RQ  0
-EV  IPRXXXX; PF01380;
+EV  IPRXXXX; PF01380; clustered;
 --
 SN  10
 ID  Sugar modification transferases: amino-, carbamoyl-, acetyl-, methyl-, amido-
 DN  Sugar modification transferases: amino-, carbamoyl-, acetyl-, methyl-, amido-/transf
 RQ  0
-EV  IPRXXXX; PF02543;
-EV  IPRXXXX; PF01041;
-EV  IPRXXXX; PF08241;
-EV  IPRXXXX; TIGR01444;
-EV  IPR020022; TIGR03573;
-EV  IPR010139; TIGR01855;
-EV  IPR020021; TIGR03572;
-EV  IPRXXXX; PF00202;
-EV  IPR000182; PF00583;
-EV  IPRXXXX; PF02388;
-EV  IPRXXXX; PF08242;
-EV  IPRXXXX; PF00551;
+EV  IPRXXXX; PF02543; clustered;
+EV  IPRXXXX; PF01041; clustered;
+EV  IPRXXXX; PF08241; clustered;
+EV  IPRXXXX; TIGR01444; clustered;
+EV  IPR020022; TIGR03573; clustered;
+EV  IPR010139; TIGR01855; clustered;
+EV  IPR020021; TIGR03572; clustered;
+EV  IPRXXXX; PF00202; clustered;
+EV  IPR000182; PF00583; clustered;
+EV  IPRXXXX; PF02388; clustered;
+EV  IPRXXXX; PF08242; clustered;
+EV  IPRXXXX; PF00551; clustered;
 --
 SN  11
 ID  Sugar trimming enzymes: phosphatases, deacetylases, esterases
 DN  Sugar trimming enzymes: phosphatases, deacetylases, esterases/trim
 RQ  0
-EV  IPRXXXX; PF00459;
-EV  IPRXXXX; PF01522;
-EV  IPRXXXX; PF02585;
+EV  IPRXXXX; PF00459; clustered;
+EV  IPRXXXX; PF01522; clustered;
+EV  IPRXXXX; PF02585; clustered;
 --
 SN  12
 ID  Transposases
 DN  Transposases/tspsase
 RQ  0
-EV  IPR002525; PF01548;
+EV  IPR002525; PF01548; clustered;
 --
 SN  13
 ID  EPS biosynthesis wzx/wzy/wzz system

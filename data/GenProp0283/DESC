@@ -8,13 +8,16 @@ CC  degrade aromatic compounds, via either catechol or protocatechuate, to
 CC  beta-ketoadipate and then to succinyl-CoA plus acetyl-CoA. This
 CC  property represents the shared final two steps, from beta-ketoadipate
 CC  to succinyl- and acetyl-CoA.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Beta-ketoadipyl CoA thiolase
 DN  Beta-ketoadipyl CoA thiolase/pcaF
 RQ  1
 EV  IPR012793; TIGR02430; sufficient;
-EV  IPR002155; TIGR01930;
+EV  IPR002155; TIGR01930; clustered;
 --
 SN  2
 ID  CoA-transferase, A subunit

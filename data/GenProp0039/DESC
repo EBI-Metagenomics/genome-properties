@@ -16,6 +16,9 @@ CC  in non-mammals. The YES state for this pathway is therefore indicative
 CC  of the presence of the first two steps.
 **  Evidence for step 1 is also used for GP0045.
 **  Evidence for step 2 is also used for GP0045.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Chorismate mutase
@@ -53,6 +56,6 @@ TG  GO:0009094;
 SN  3
 ID  A transaminase
 RQ  0
-EV  IPR004839; PF00155;
+EV  IPR004839; PF00155; clustered;
 TG  GO:0009094;
 //

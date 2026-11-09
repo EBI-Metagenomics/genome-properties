@@ -13,6 +13,9 @@ CC  converted to 3-phosphoglycerate).
 **  Evidence for step 4 is also used for GP0689 and GP0716.
 **  Evidence for step 6 is also used for GP0176.
 **  Evidence for step 6 is also used for GP0715, GP0716 and GP0717.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Galactarate dehydratase (EC 4.2.1.42)
@@ -25,7 +28,7 @@ SN  2
 ID  Glycerate kinase (EC 2.7.1.31)
 DN  Glycerate kinase (EC 2.7.1.31)
 RQ  1
-EV  IPR004381; TIGR00045;
+EV  IPR004381; TIGR00045; clustered;
 TG  GO:0046392;
 --
 SN  3
@@ -46,12 +49,12 @@ SN  6
 ID  D-galactarate transporter, putative
 DN  D-galactarate transporter, putative
 RQ  0
-EV  IPR004681; TIGR00786;
+EV  IPR004681; TIGR00786; clustered;
 TG  GO:0046392;
-EV  IPR007387; PF04290;
+EV  IPR007387; PF04290; clustered;
 TG  GO:0046392;
-EV  IPR004682; TIGR00787;
+EV  IPR004682; TIGR00787; clustered;
 TG  GO:0046392;
-EV  IPR004744; TIGR00893;
+EV  IPR004744; TIGR00893; clustered;
 TG  GO:0046392;
 //

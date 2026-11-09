@@ -16,6 +16,9 @@ CC  GGTCTC and CGTCTC.
 **  HMM search with PF00145.FRAG vs. the C-5 cytosine-specific DNA
 **  methylase shows circular permutation. For now, PF00145 is used in
 **  HMM-CLUST, but should be able to be its own model.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Type II restriction endonuclease, Alw26I/Eco31I/Esp3I family
@@ -33,5 +36,5 @@ SN  3
 ID  Type II restriction m5 cytosine DNA methyltransferase, Alw26I/Eco31I/Esp3I family
 DN  Type II restriction m5 cytosine DNA methyltransferase, Alw26I/Eco31I/Esp3I family
 RQ  1
-EV  IPRXXXX; PF00145;
+EV  IPRXXXX; PF00145; clustered;
 //

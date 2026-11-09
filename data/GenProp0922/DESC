@@ -17,6 +17,9 @@ CC  recruited to demonstrable roles in fruiting body development.
 **  Evidence for step 4 is also used for GP0021 (GUILD), GP0313, GP0317, 
 **  GP0319, GP0320, GP0469 and GP0768.
 **  Evidence for step 7 is also used for GP0021 (GUILD)
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  CRISPR-associated protein Cas1, MYXAN subtype
@@ -28,19 +31,19 @@ SN  2
 ID  CRISPR-associated protein Cas2, MYXAN subtype
 DN  CRISPR-associated protein Cas2, MYXAN subtype
 RQ  1
-EV  IPR021127; TIGR01573;
+EV  IPR021127; TIGR01573; clustered;
 --
 SN  3
 ID  Cas3, MYXAN region
 DN  Cas3, MYXAN region
 RQ  1
-EV  IPR006474; TIGR01587;
+EV  IPR006474; TIGR01587; clustered;
 --
 SN  4
 ID  CRISPR-associated protein Cas4, MYXAN subtype
 DN  CRISPR-associated protein Cas4, MYXAN subtype
 RQ  1
-EV  IPR013343; TIGR00372;
+EV  IPR013343; TIGR00372; clustered;
 --
 SN  5
 ID  CRISPR-associated protein Csx13, C-terminal region
@@ -70,5 +73,5 @@ SN  9
 ID  CRISPR-associated autoregulator, MYXAN subtype
 DN  CRISPR-associated autoregulator, MYXAN subtype
 RQ  1
-EV  IPR010154; TIGR01875;
+EV  IPR010154; TIGR01875; clustered;
 //

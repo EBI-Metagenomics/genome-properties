@@ -9,14 +9,17 @@ CC  in a number of species and likely replaces the lipoate-based E1/E2/E3
 CC  system in many organisms lacking it.
 **  Evidence for step 1 is also used for GP0839.
 **  Evidence for step 3 is also used for GP0839.
+**  EV lines marked "clustered" were HMM-CLUST evidence in JCVI Genome
+**  Properties release 3.2: they only count when the matching gene lies
+**  near a gene found by other evidence in this property.
 --
 SN  1
 ID  Ferredoxin, or other gene clustered electron acceptor
 DN  Ferredoxin, or other gene clustered electron acceptor/acceptor
 RQ  0
-EV  IPR017896; PF00037;
-EV  IPR008331; PF00210;
-EV  IPR003251; PF02915;
+EV  IPR017896; PF00037; clustered;
+EV  IPR008331; PF00210; clustered;
+EV  IPR003251; PF02915; clustered;
 --
 SN  2
 ID  2-oxoacid:acceptor oxidoreductase, alpha subunit
@@ -28,6 +31,6 @@ SN  3
 ID  2-oxoacid:acceptor oxidoreductase, beta subuni
 DN  2-oxoacid:acceptor oxidoreductase, beta subuni/beta
 RQ  1
-EV  IPR011896; TIGR02177;
-EV  IPR011766; PF02775;
+EV  IPR011896; TIGR02177; clustered;
+EV  IPR011766; PF02775; clustered;
 //
